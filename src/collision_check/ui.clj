@@ -110,8 +110,8 @@
       (s/invoke-now (s/alert @root 
                              "Satellite covariance must be positive-definite."))
       (set-false))
-    (when-not (< (ops/euclid-dist asset-pos sat-pos) 10000)
-      (s/invoke-now (s/alert @root "Miss Distance is greater than 10 km."))
+    (when-not (<= (ops/euclid-dist asset-pos sat-pos) 20000)
+      (s/invoke-now (s/alert @root "Miss Distance is greater than 20 km."))
       (set-false))
     (when-not (pos? rad)
       (s/invoke-now (s/alert @root
