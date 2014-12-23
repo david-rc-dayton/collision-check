@@ -1,4 +1,4 @@
-(defproject collision-check "3.1.2"
+(defproject collision-check "3.1.3"
   :description "Satellite collision probability estimator."
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [com.github.insubstantial/substance "7.3"]
