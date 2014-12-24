@@ -4,7 +4,6 @@
                  [com.github.insubstantial/substance "7.3"]
                  [seesaw "1.4.4"]
                  [incanter "1.5.5"]]
-  :javac-options ["-target" "1.6" "-source" "1.6" "-Xlint:-options"]
-  :aot :all
-  :omit-source true
+  :javac-options ["-target" "1.7" "-source" "1.7" "-Xlint:-options"]
+  :aot [collision-check.core]
   :main collision-check.core)

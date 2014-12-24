@@ -11,11 +11,11 @@
   (let [val (s/text text-field)
         id (s/id-of text-field)]
     (try (Double/parseDouble val)
-      (catch NumberFormatException _ 
+      (catch NumberFormatException _
         (when show-alert?
           (s/invoke-now
             (s/alert @root (str "Invalid value entered in : " id
-                                "\nReplaced with " default-value 
+                                "\nReplaced with " default-value
                                 " for calculation."))))
         default-value))))
 
@@ -37,7 +37,7 @@
 (defn parse-asset-cov
   "Parse user input from UI for asset covariance. Defaults to zero."
   [show-alert?]
-  (let [cov-one (map #(parse-fn % 0 show-alert?) 
+  (let [cov-one (map #(parse-fn % 0 show-alert?)
                      [(s/select @root [:#asset-cov-00])
                       (s/select @root [:#asset-cov-01])
                       (s/select @root [:#asset-cov-02])])
@@ -103,11 +103,11 @@
       (s/invoke-now (s/alert @root "Satellite covariance must be symmetrical."))
       (set-false))
     (when-not (ops/positive-definite? asset-cov)
-      (s/invoke-now (s/alert @root 
+      (s/invoke-now (s/alert @root
                              "Asset covariance must be positive-definite."))
       (set-false))
     (when-not (ops/positive-definite? sat-cov)
-      (s/invoke-now (s/alert @root 
+      (s/invoke-now (s/alert @root
                              "Satellite covariance must be positive-definite."))
       (set-false))
     (when-not (<= (ops/euclid-dist asset-pos sat-pos) 20000)
@@ -131,7 +131,7 @@
   "Sample collision space, and output probabilit of collision"
   [& _]
   (when (valid-input?)
-    (s/config! (s/select @root [:#run-button]) :enabled? false)
+    (s/invoke-now (s/config! (s/select @root [:#run-button]) :enabled? false))
     (let [asset-pos (parse-asset-pos true)
           asset-cov (parse-asset-cov true)
           sat-pos (parse-sat-pos true)
@@ -147,21 +147,24 @@
                       (do
                         (s/invoke-now
                           (s/config! (s/select @root [:#progress])
-                                     :value (int (* (/ (count miss-dist) 
+                                     :value (int (* (/ (count miss-dist)
                                                        samples) 100))))
-                        (let [sample-map (ops/sample-space 
+                        (let [sample-map (ops/sample-space
                                            asset-pos asset-cov
                                            sat-pos sat-cov sigma)]
-                          (recur 
+                          (recur
                             (conj miss-dist (:miss-distance sample-map))
                               (conj asset-points (:asset-point sample-map))
                               (conj sat-points (:sat-point sample-map)))))))]
-      (s/config! (s/select @root [:#progress]) :indeterminate? true)
+      (s/invoke-now (s/config! (s/select @root [:#progress])
+                               :indeterminate? true))
       (ops/display-point-result (:asset-points results) 
                                 (:sat-points results) 2500)
       (ops/display-cdf-result (:miss-distances results) asset-pos sat-pos rad)
-      (s/config! (s/select @root [:#run-button]) :enabled? true)
-      (s/config! (s/select @root [:#progress]) :indeterminate? false)
+      (s/invoke-now (s/config! (s/select @root [:#run-button])
+                               :enabled? true))
+      (s/invoke-now (s/config! (s/select @root [:#progress])
+                               :indeterminate? false))
       (s/invoke-now (s/config! (s/select @root [:#progress]) :value 0)))))
 
 (defn input-panel
@@ -197,7 +200,7 @@
         run-button (s/button :text "Run" :id :run-button)
         progress-indicator (s/progress-bar :id :progress)]
     (s/listen run-button :action (fn [_] (future (sample-fn))))
-    (s/vertical-panel :items [(s/horizontal-panel 
+    (s/vertical-panel :items [(s/horizontal-panel
                                 :items ["Asset Position (m): "])
                               (s/grid-panel :columns 3 :rows 1
                                             :items [asset-pos-u
@@ -241,7 +244,7 @@
                                                     sigma])
                               (s/grid-panel :columns 2 :rows 1
                                 :items ["Samples: " iteration-input])
-                              (s/horizontal-panel 
+                              (s/horizontal-panel
                                 :items [progress-indicator])
                               (s/grid-panel :items [run-button])])))
 
