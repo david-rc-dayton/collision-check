@@ -2,6 +2,8 @@
 
 *Collision Check* is a calculator for estimating the probability of collision between two conjuncting satellites, using information found in a standard [Conjunction Summary Message (CSM)](https://www.space-track.org/documents/CSM_Guide.pdf). This is accomplished via [Monte Carlo simulation](http://en.wikipedia.org/wiki/Monte_Carlo_method), using the [Cholesky decomposition](http://en.wikipedia.org/wiki/Cholesky_decomposition) of the conjuncting satellites' [dispersion adjusted](http://en.wikipedia.org/wiki/Standard_deviation) covariance matrices sampled over a random [Gaussian distribution](http://en.wikipedia.org/wiki/Normal_distribution).
 
+The program can be downloaded in the [releases](https://github.com/david-rc-dayton/collision-check/releases) tab.
+
 # Screenshots
 
 ![calculator](https://raw.githubusercontent.com/david-rc-dayton/collision-check/master/screenshots/calculator_screenshot.png)
