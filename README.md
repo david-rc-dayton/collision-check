@@ -23,6 +23,11 @@ The program will packaged as a standalone JAR file in the `./target` directory.
 
 *This program requires an installed [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/index.html), version 7 or higher.*
 
+*For non-Windows operating systems, the Fortran runtime library must be installed. This can be accomplised in Debian/Ubuntu by running:*
+
+    sudo apt-get install libgfortran3
+
+
 To run the program, double click the `collision-check-XXX-standalone.jar` (if your operating system's file manager is configured to launch Java programs), or by entering the following in the command line (replacing `XXX` with the version number):
 
 `java -jar collision-check-XXX-standalone.jar`
