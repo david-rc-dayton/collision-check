@@ -89,7 +89,7 @@
     (ic/add-text chart (* max-miss 0.75) 0.05
                  (format "Collision Probability: %.0e" (double coll-prob)))
     (s/invoke-now
-      (i/view chart :width 450 :height 450
+      (i/view chart :width 500 :height 500
               :window-title "Miss-Distance Cumulative Distribution"))))
 
 (defn display-point-result
@@ -115,9 +115,9 @@
                    (ic/add-points sat-u sat-v) (ic/set-alpha alpha)
                    (ic/set-x-label "Radial Axis (m)")
                    (ic/set-y-label "In-Track Axis (m)"))]
-    (s/invoke-now (i/view chart-vw :width 450 :height 450
+    (s/invoke-now (i/view chart-vw :width 500 :height 500
                           :window-title "VW-Axis Conjunction Space"))
-    (s/invoke-now (i/view chart-uw :width 450 :height 450
+    (s/invoke-now (i/view chart-uw :width 500 :height 500
                           :window-title "UW-Axis Conjunction Space"))
-    (s/invoke-now (i/view chart-uv :width 450 :height 450
+    (s/invoke-now (i/view chart-uv :width 500 :height 500
                           :window-title "UV-Axis Conjunction Space"))))
