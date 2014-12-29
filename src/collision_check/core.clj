@@ -23,8 +23,8 @@
   (s/invoke-later
     (doto (s/frame :title display-name
                    :content (ui/ui-panel)
-                   :size [500 :by 500]
-                   :minimum-size [500 :by 500]
+                   :size [450 :by 450]
+                   :minimum-size [450 :by 450]
                    :icon "icon.png"
                    :on-close :exit)
       center! s/show!)))

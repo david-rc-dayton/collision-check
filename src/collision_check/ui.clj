@@ -128,10 +128,15 @@
     @return-valid))
 
 (defn sample-fn
-  "Sample collision space, and output probabilit of collision"
+  "Sample collision space, and output probability of collision."
   [& _]
+  (s/invoke-now (s/config! (s/select @root [:#run-button]) :enabled? false))
+  (s/invoke-now (s/config! (s/select @root [:#progress])
+                           :indeterminate? true))
   (when (valid-input?)
-    (s/invoke-now (s/config! (s/select @root [:#run-button]) :enabled? false))
+    (s/invoke-now (s/config! (s/select @root [:#progress])
+                             :indeterminate? false))
+    (s/invoke-now (s/config! (s/select @root [:#progress]) :value 0))
     (let [asset-pos (parse-asset-pos true)
           asset-cov (parse-asset-cov true)
           sat-pos (parse-sat-pos true)
@@ -154,18 +159,17 @@
                                            sat-pos sat-cov sigma)]
                           (recur
                             (conj miss-dist (:miss-distance sample-map))
-                              (conj asset-points (:asset-point sample-map))
-                              (conj sat-points (:sat-point sample-map)))))))]
+                            (conj asset-points (:asset-point sample-map))
+                            (conj sat-points (:sat-point sample-map)))))))]
       (s/invoke-now (s/config! (s/select @root [:#progress])
                                :indeterminate? true))
-      (ops/display-point-result (:asset-points results) 
+      (ops/display-point-result (:asset-points results)
                                 (:sat-points results) 2500)
-      (ops/display-cdf-result (:miss-distances results) asset-pos sat-pos rad)
-      (s/invoke-now (s/config! (s/select @root [:#run-button])
-                               :enabled? true))
-      (s/invoke-now (s/config! (s/select @root [:#progress])
-                               :indeterminate? false))
-      (s/invoke-now (s/config! (s/select @root [:#progress]) :value 0)))))
+      (ops/display-cdf-result (:miss-distances results) asset-pos sat-pos rad)))
+  (s/invoke-now (s/config! (s/select @root [:#progress])
+                           :indeterminate? false))
+  (s/invoke-now (s/config! (s/select @root [:#progress]) :value 0))
+  (s/invoke-now (s/config! (s/select @root [:#run-button]) :enabled? true)))
 
 (defn input-panel
   "Create panel for Conjunction Summary Message input."
