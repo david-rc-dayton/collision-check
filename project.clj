@@ -5,5 +5,6 @@
                  [seesaw "1.4.4"]
                  [incanter "1.5.5"]]
   :javac-options ["-target" "1.7" "-source" "1.7" "-Xlint:-options"]
-  :aot [collision-check.core]
+  :aot :all
+  :omit-source true
   :main collision-check.core)
