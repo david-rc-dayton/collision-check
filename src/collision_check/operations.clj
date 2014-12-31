@@ -43,8 +43,8 @@
 
 (defn sample-space
   "Sample collision space, using the asset/satellite position as a list,
-   covariance as a list of lists, and the standard deviation. Returns the miss
-   distance between the asset and conjuncting satellite."
+  covariance as a list of lists, and the standard deviation. Returns the miss
+  distance between the asset and conjuncting satellite."
   [asset-pos asset-cov sat-pos sat-cov std-dev]
   (let [asset-vec (i/matrix asset-pos)
         asset-gauss (gauss-matrix)
@@ -89,8 +89,8 @@
     (ic/add-text chart (* max-miss 0.75) 0.05
                  (format "Collision Probability: %.0e" (double coll-prob)))
     (s/invoke-now
-      (i/view chart :width 450 :height 450
-              :window-title "Miss-Distance Cumulative Distribution"))))
+     (i/view chart :width 450 :height 450
+             :window-title "Miss-Distance Cumulative Distribution"))))
 
 (defn display-point-result
   "Create and display a chart containing a scatter point representation of the
@@ -104,17 +104,17 @@
         sat-v (take plotted-points (map #(nth % 1) sat-points))
         sat-w (take plotted-points (map #(nth % 2) sat-points))
         chart-vw (-> (ic/scatter-plot asset-v asset-w)
-                   (ic/add-points sat-v sat-w) (ic/set-alpha alpha)
-                   (ic/set-x-label "In-Track Axis (m)")
-                   (ic/set-y-label "Cross-Track Axis (m)"))
+                     (ic/add-points sat-v sat-w) (ic/set-alpha alpha)
+                     (ic/set-x-label "In-Track Axis (m)")
+                     (ic/set-y-label "Cross-Track Axis (m)"))
         chart-uw (-> (ic/scatter-plot asset-u asset-w)
-                   (ic/add-points sat-u sat-w) (ic/set-alpha alpha)
-                   (ic/set-x-label "Radial Axis (m)")
-                   (ic/set-y-label "Cross-Track Axis (m)"))
+                     (ic/add-points sat-u sat-w) (ic/set-alpha alpha)
+                     (ic/set-x-label "Radial Axis (m)")
+                     (ic/set-y-label "Cross-Track Axis (m)"))
         chart-uv (-> (ic/scatter-plot asset-u asset-v)
-                   (ic/add-points sat-u sat-v) (ic/set-alpha alpha)
-                   (ic/set-x-label "Radial Axis (m)")
-                   (ic/set-y-label "In-Track Axis (m)"))]
+                     (ic/add-points sat-u sat-v) (ic/set-alpha alpha)
+                     (ic/set-x-label "Radial Axis (m)")
+                     (ic/set-y-label "In-Track Axis (m)"))]
     (s/invoke-now (i/view chart-vw :width 450 :height 450
                           :window-title "VW-Axis Conjunction Space"))
     (s/invoke-now (i/view chart-uw :width 450 :height 450
