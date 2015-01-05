@@ -21,10 +21,10 @@
   [& args]
   (SubstanceLookAndFeel/setSkin (GraphiteGlassSkin.))
   (s/invoke-later
-   (doto (s/frame :title display-name
-                  :content (ui/ui-panel)
-                  :size [450 :by 450]
-                  :minimum-size [450 :by 450]
-                  :icon "icon.png"
-                  :on-close :exit)
-     center! s/show!)))
+    (doto (s/frame :title display-name
+                   :content (ui/ui-panel)
+                   :size [450 :by 450]
+                   :minimum-size [450 :by 450]
+                   :icon "icon.png"
+                   :on-close :exit)
+      center! s/show!)))

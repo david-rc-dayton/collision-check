@@ -11,12 +11,12 @@
   (let [val (s/text text-field)
         id (s/id-of text-field)]
     (try (Double/parseDouble val)
-         (catch NumberFormatException _
-           (when show-alert?
-             (s/invoke-now
-              (s/alert @root (str "Invalid value entered in : " id
-                                  "\nReplaced with " default-value
-                                  " for calculation."))))
+      (catch NumberFormatException _
+        (when show-alert?
+          (s/invoke-now
+            (s/alert @root (str "Invalid value entered in : " id
+                                "\nReplaced with " default-value
+                                " for calculation."))))
            default-value))))
 
 (defn parse-asset-pos
@@ -151,16 +151,16 @@
                        :sat-points sat-points}
                       (do
                         (s/invoke-now
-                         (s/config! (s/select @root [:#progress])
-                                    :value (int (* (/ (count miss-dist)
+                          (s/config! (s/select @root [:#progress])
+                                     :value (int (* (/ (count miss-dist)
                                                       samples) 100))))
                         (let [sample-map (ops/sample-space
-                                          asset-pos asset-cov
-                                          sat-pos sat-cov sigma)]
+                                           asset-pos asset-cov
+                                           sat-pos sat-cov sigma)]
                           (recur
-                           (conj miss-dist (:miss-distance sample-map))
-                           (conj asset-points (:asset-point sample-map))
-                           (conj sat-points (:sat-point sample-map)))))))]
+                            (conj miss-dist (:miss-distance sample-map))
+                            (conj asset-points (:asset-point sample-map))
+                            (conj sat-points (:sat-point sample-map)))))))]
       (s/invoke-now (s/config! (s/select @root [:#progress])
                                :indeterminate? true))
       (ops/display-point-result (:asset-points results)
@@ -205,19 +205,19 @@
         progress-indicator (s/progress-bar :id :progress)]
     (s/listen run-button :action (fn [_] (future (sample-fn))))
     (s/vertical-panel :items [(s/horizontal-panel
-                               :items ["Asset Position (m): "])
+                                :items ["Asset Position (m): "])
                               (s/grid-panel :columns 3 :rows 1
                                             :items [asset-pos-u
                                                     asset-pos-v
                                                     asset-pos-w])
                               (s/horizontal-panel
-                               :items ["Satellite Position (m): "])
+                                :items ["Satellite Position (m): "])
                               (s/grid-panel :columns 3 :rows 1
                                             :items [satellite-pos-u
                                                     satellite-pos-v
                                                     satellite-pos-w])
                               (s/horizontal-panel
-                               :items ["Asset Covariance: "])
+                                :items ["Asset Covariance: "])
                               (s/grid-panel :rows 3 :columns 3
                                             :items [asset-cov-00
                                                     asset-cov-01
@@ -229,7 +229,7 @@
                                                     asset-cov-21
                                                     asset-cov-22])
                               (s/horizontal-panel
-                               :items ["Satellite Covariance: "])
+                                :items ["Satellite Covariance: "])
                               (s/grid-panel :rows 3 :columns 3
                                             :items [satellite-cov-00
                                                     satellite-cov-01
@@ -250,7 +250,7 @@
                                             :items ["Samples: "
                                                     iteration-input])
                               (s/horizontal-panel
-                               :items [progress-indicator])
+                                :items [progress-indicator])
                               (s/grid-panel :items [run-button])])))
 
 (defn ui-panel
