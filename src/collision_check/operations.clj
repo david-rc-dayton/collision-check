@@ -83,11 +83,13 @@
     (ic/set-x-label chart "Miss Distance (m)")
     (ic/set-y-label chart "Cumulative Probability")
     (ic/add-lines chart [collision-radii collision-radii] [0 1])
-    (ic/add-text chart (* max-miss 0.75) 0.08
+    (ic/add-text chart (* max-miss 0.60) 0.08
                  (format "CSM Miss Distance (m): %d"
                          (int (euclid-dist asset-pos sat-pos))))
-    (ic/add-text chart (* max-miss 0.75) 0.05
-                 (format "Collision Probability: %.0e" (double coll-prob)))
+    (ic/add-text chart (* max-miss 0.60) 0.05
+                 (format "Collision Probability: %.0e %s" (double coll-prob) 
+                         (if (pos? coll-prob)
+                           (format "=> 1 in %,d" (int (/ 1 coll-prob))) "")))
     (s/invoke-now
       (i/view chart :width 450 :height 450
               :window-title "Miss-Distance Cumulative Distribution"))))
