@@ -105,16 +105,22 @@
         sat-u (take plotted-points (map #(nth % 0) sat-points))
         sat-v (take plotted-points (map #(nth % 1) sat-points))
         sat-w (take plotted-points (map #(nth % 2) sat-points))
-        chart-vw (-> (ic/scatter-plot asset-v asset-w)
-                   (ic/add-points sat-v sat-w) (ic/set-alpha alpha)
+        chart-vw (-> (ic/scatter-plot sat-v sat-w :legend true
+                                      :series-label "Satellite")
+                   (ic/add-points asset-v asset-w :series-label "Asset")
+                   (ic/set-alpha alpha)
                    (ic/set-x-label "In-Track Axis (m)")
                    (ic/set-y-label "Cross-Track Axis (m)"))
-        chart-uw (-> (ic/scatter-plot asset-u asset-w)
-                   (ic/add-points sat-u sat-w) (ic/set-alpha alpha)
+        chart-uw (-> (ic/scatter-plot sat-u sat-w :legend true
+                                      :series-label "Satellite")
+                   (ic/add-points asset-u asset-w :series-label "Asset")
+                   (ic/set-alpha alpha)
                    (ic/set-x-label "Radial Axis (m)")
                    (ic/set-y-label "Cross-Track Axis (m)"))
-        chart-uv (-> (ic/scatter-plot asset-u asset-v)
-                   (ic/add-points sat-u sat-v) (ic/set-alpha alpha)
+        chart-uv (-> (ic/scatter-plot sat-u sat-v :legend true
+                                      :series-label "Satellite")
+                   (ic/add-points asset-u asset-v :series-label "Asset")
+                   (ic/set-alpha alpha)
                    (ic/set-x-label "Radial Axis (m)")
                    (ic/set-y-label "In-Track Axis (m)"))]
     (s/invoke-now (i/view chart-vw :width 450 :height 450
