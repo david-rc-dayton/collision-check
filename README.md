@@ -38,7 +38,7 @@ The program will packaged as a standalone JAR file in the `./target` directory.
 [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
 version 7 or higher.*
 
-*For non-Windows operating systems, the Fortran runtime library must be
+*For 64-bit Linux operating systems, the Fortran runtime library must be
 installed. This can be accomplised in Debian/Ubuntu by running:*
 
     sudo apt-get install libgfortran3
