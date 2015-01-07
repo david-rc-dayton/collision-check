@@ -99,7 +99,7 @@
   "Create and display a chart containing a scatter point representation of the
    sampled points, showing the conjunction space."
   [asset-points sat-points plotted-points]
-  (let [alpha 0.2
+  (let [alpha 0.05
         asset-u (take plotted-points (map #(nth % 0) asset-points))
         asset-v (take plotted-points (map #(nth % 1) asset-points))
         asset-w (take plotted-points (map #(nth % 2) asset-points))
