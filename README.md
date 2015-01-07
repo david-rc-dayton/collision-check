@@ -88,8 +88,8 @@ CSM, and the `Collision Probability`.
 - `UVW-Axis Conjunction Space`: Several charts showing a subset of the points
 sampled in the conjunction space. This provides a visual representation of the
 position and covariance in the Radial, In-Track, and Cross-Track planes. The
-asset's sampled points will appear red, and the satellite's sampled points
-will appear blue.
+asset's sampled points will appear blue, and the satellite's sampled points
+will appear red.
 
 The charts can be saved or manipulated by right-clicking inside the chart area
 and selecting from the available options. Zooming in is accomplished by
