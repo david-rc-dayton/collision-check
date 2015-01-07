@@ -108,7 +108,7 @@ standard threshold is **1e-04**, a 1 in 10,000 chance of colliding.
 
 The MIT License (MIT)
 
-Copyright (c) 2014 David RC Dayton <br>
+Copyright (c) 2014 David RC Dayton  
 Copyright (c) 2014 John W Harms
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
