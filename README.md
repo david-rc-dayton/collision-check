@@ -4,8 +4,8 @@
 between two conjuncting satellites, using information found in a standard
 [Conjunction Summary Message (CSM)](https://www.space-track.org/documents/CSM_Guide.pdf).
 This is accomplished via
-[Monte Carlo simulation](http://en.wikipedia.org/wiki/Monte_Carlo_method),
-using the
+[Monte Carlo simulation](http://en.wikipedia.org/wiki/Monte_Carlo_method);
+employing the
 [Cholesky decomposition](http://en.wikipedia.org/wiki/Cholesky_decomposition)
 of the conjuncting satellites'
 [dispersion adjusted](http://en.wikipedia.org/wiki/Standard_deviation)
@@ -38,8 +38,8 @@ The program will packaged as a standalone JAR file in the `./target` directory.
 [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
 version 7 or higher.*
 
-*For 64-bit Linux operating systems, the Fortran runtime library must be
-installed. This can be accomplised in Debian/Ubuntu by running:*
+*For 64-bit Linux operating systems, the FORTRAN runtime library must be
+installed. This can be accomplished in Debian/Ubuntu by running:*
 
     sudo apt-get install libgfortran3
 
@@ -53,10 +53,10 @@ version number):
 
 Once the application has started;
 - Enter the UVW coordinates from the CSM in the `Asset Position` and
-`Satellite Postion` fields.
+`Satellite Position` fields.
 - Enter the 3x3 UVW covariance matrices from the CSM in the `Asset Covariance`
 and `Satellite Covariance` fields.
-- Enter the combined radii (in meters) of the satelites in the `Combined
+- Enter the combined radii (in meters) of the satellites in the `Combined
 Radii` field, to define the collision space. **The radar cross-section from
 the CSM is not a reliable measure of the actual satellite cross section. It is
 safer to over-estimate, than under-estimate.**
@@ -80,9 +80,9 @@ If all values are determined to be valid, the progress bar above the `Run`
 button will begin to increment as the conjunction space is sampled. Upon
 sampling completion, several charts will be created:
 - `Miss-Distance Cumulative Distribution`: Shows the
-[cumulative distribtion](http://en.wikipedia.org/wiki/Cumulative_distribution_function)
+[cumulative distribution](http://en.wikipedia.org/wiki/Cumulative_distribution_function)
 of the miss distances calculated during the simulation. A vertical bar is also
-included to indicate the collision space boundry. Also contained in the chart
+included to indicate the collision space boundary. Also contained in the chart
 are the `CSM Miss Distance`, to compare with the miss distance found in the
 CSM, and the `Collision Probability`.
 - `UVW-Axis Conjunction Space`: Several charts showing a subset of the points
@@ -93,7 +93,7 @@ will appear red.
 
 The charts can be saved or manipulated by right-clicking inside the chart area
 and selecting from the available options. Zooming in is accomplished by
-higlighting a area on the chart with the mouse cursor; clicking and dragging
+highlighting a area on the chart with the mouse cursor; clicking and dragging
 up will reset the chart's zoom.
 
 A Collision Avoidance (ColA) Maneuver should probably be considered when the
