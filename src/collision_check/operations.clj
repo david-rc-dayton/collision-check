@@ -14,9 +14,10 @@
 (defn symmetric?
   "Return true if a 3x3 list of lists is symmetric along the identity."
   [matrix]
-  (let [tri-fst (= (get-in matrix [1 0]) (get-in matrix [0 1]))
-        tri-snd (= (get-in matrix [2 0]) (get-in matrix [0 2]))
-        tri-thd (= (get-in matrix [1 2]) (get-in matrix [2 1]))]
+  (let [mat-adj (vec (map vec matrix))
+        tri-fst (= (get-in mat-adj [1 0]) (get-in mat-adj [0 1]))
+        tri-snd (= (get-in mat-adj [2 0]) (get-in mat-adj [0 2]))
+        tri-thd (= (get-in mat-adj [1 2]) (get-in mat-adj [2 1]))]
     (and tri-fst tri-snd tri-thd)))
 
 (defn positive-definite?
