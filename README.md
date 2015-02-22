@@ -46,8 +46,8 @@ installed. This can be accomplished in Debian/Ubuntu by running:*
 
 To run the program, double click the `collision-check-XXX-standalone.jar` (if
 your operating system's file manager is configured to launch Java programs),
-or by entering the following in the command line (replacing `XXX` with the
-version number):
+or enter the following in your terminal (replacing `XXX` with the version
+number):
 
     java -jar collision-check-XXX-standalone.jar
 
